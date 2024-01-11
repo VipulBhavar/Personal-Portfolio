@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/990a38f155.js" crossorigin="anonymous"></script>
+    <script>
+        function submitForm() {
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const mobile = document.getElementById("mobile").value;
+          const subject = document.getElementById("subject").value;
+          const message = document.getElementById("message").value;
+  
+          if (!name || !email || !mobile|| !subject || !message) {
+            return alert("Please fill all the field")
+          }else{
+  
+            // Example usage:
+            const destinationPhoneNumber = '919689134275'; // Replace with the actual destination phone number
+            const templateParams = [
+              'Vipul Bhavar-Portfolio',
+              name,
+              email,
+              mobile,
+              subject,
+              message
+            ];
+        
+  
+  // Call the function with dynamic values
+  sendWhatsAppMessage(destinationPhoneNumber, templateParams);
+          }
+        }
+  
+  function sendWhatsAppMessage(destinationPhoneNumber, templateParams) {
+    const apiUrl = 'https://api.gupshup.io/wa/api/v1/template/msg';
+    const apiKey = 'y6augsnlvufcalxps2grvxgbmxvdjgo7';
+  
+    const postData = new URLSearchParams();
+    postData.append('channel', 'whatsapp');
+    postData.append('source', '12345293827');
+    postData.append('destination', destinationPhoneNumber); // Use the provided destinationPhoneNumber
+    postData.append('src.name', 'ChatWeaver');
+    postData.append('template', JSON.stringify({
+      id: 'e7bac4b3-41ee-414a-896f-1b8c398d8eb3',
+      params: templateParams // Use the provided templateParams array
+    }));
+  
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'apikey': apiKey,
+        'cache-control': 'no-cache',
+      },
+      body: postData,
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+  }
+      </script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images/logo.jpg" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fa-regular fa-circle-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                <p>Web Developer</p> 
+                <h1>Hi, I'm <span> Vipul Bhavar </span><br>From, Mumbai</h1>
+            </div>
+        </div>
+
+    </div>
+    <!-- -------------------------about-------------------------- -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/about.jpg">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>I am looking for opportunities to incorporate my skills and training to help the company grow.
+                        To work in an environment where I can grow professionally with utilizing my skills and knowledge. I'm
+                        keen to learn new technologies and improving hands-on skills to serve out the best.
+                        </p>
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                            <p class="tab-links"onclick="opentab('education')">Education</p>
+                            <p class="tab-links"onclick="opentab('experience')">Experience</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li>C <span></span></li>
+                                <li>C++ <span></span></li>
+                                <li>Python</li>
+                                <li>HTML,CSS & Javascript <span></span></li>
+                                <li>Operating System <span></span></li>
+                                <li>Data Structure and Algorithms<span></span></li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <li><span>BE in Cmputer Engineering</span><br>Atharva college of Engineering,Malad Mumbai</li>
+                                <li><span>HSC</span><br> P.G.Junior college Bordi,Dahanu</li>
+                                <li><span>SSC</span><br>Gnanmata Highschool Uplat,Talasari</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="experience">
+                            <ul>
+                                <li><span>Web Developement & Designing Intern</span><br>The Sparks Foundation(10/2021-11/2021)</li>
+                                <li><span>Web Developement Intern</span><br>Lets Grow More (08/2023-09/2023)</li>
+                            </ul>
+                        </div>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ----------------------------------Services---------------------------------- -->
+    <div id="services">
+        <div class="container">
+        <h1 class="sub-title">My Services</h1>   
+        <div class="services-list">
+            <div>
+                <i class="fa-solid fa-code"></i>
+                <h2>Web Designing</h2>
+                <p>Web designing is the process of planning, conceptualizing, and implementing the plan for designing a website in a way that is functional and offers a good user experience.</p>
+                <a href="https://www.simplilearn.com/what-is-web-designing-article#:~:text=Web%20designing%20is%20the%20process,make%20them%20easy%20to%20navigate.">Learn more</a>
+            </div>
+            <div>
+                <i class="fa-brands fa-app-store"></i>
+                <h2>App Designing</h2>
+                <p>App design is the look and feel of a mobile application. This includes all of the visual elements and interactive elements that impact how the app functions.</p>
+                <a href="https://buildfire.com/tools-for-mobile-app-designers/#:~:text=App%20design%20is%20the%20look,the%20app's%20look%20and%20feel.">Learn more</a>
+            </div>
+            <div>
+                <i class="fa-brands fa-aws"></i>
+                <h2>Web Hosting</h2>
+                <p>Web hosting is a type of Internet hosting service that allows organisations and individuals to post a website or web page onto the server , which can be viewed by everyone on the Internet .</p>
+                <a href="https://www.hostinger.in/tutorials/what-is-web-hosting/#:~:text=Web%20hosting%20is%20an%20online,the%20website's%20files%20and%20data.">Learn more</a>
+            </div>
+
+        </div>
+        </div>
+    </div>
+    <!-- -----------------------------------Portfolio----------------------------------- -->
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title">My Work</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="images/ToDo.jpg">
+                    <div class="layer">
+                        <h3>ToDo List App</h3>
+                        <p>This app cerates and manages all your daily tasks and activities</p>
+                        <a href="https://vipulbhavar.github.io/todo-list/"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/Steganography.jpg">
+                    <div class="layer">
+                        <h3>Steganography web app</h3>
+                        <p>Using this app you can make confidential communications where your confidential message is hide behind an image and can only be decrypted by desire key </p>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/Stock Price Trend.jpg">
+                    <div class="layer">
+                        <h3>Stock price trend app</h3>
+                        <p>By this app you can predict the future growth of listed companies based on their past performances</p>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>    
+            </div>
+            <a href="#" class="btn">See more</a>
+        </div>
+    </div>
+    <!-- -----------------------------------------Contact------------------------------------------ -->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-titlt">Contact Me</h1>
+                    <p><i class="fa-solid fa-paper-plane"></i> contact@bhavarvipul@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i> 9689134275</p>
+                    <div class="social-icons">
+                       <a href="https://www.linkedin.com/in/vipul-bhavar-060505219/"><i class="fa-brands fa-linkedin"></i></a>
+                       <a href="https://github.com/VipulBhavar"><i class="fa-brands fa-github"></i></a>
+                       <a href="https://www.facebook.com/vipul.bhavar.56"><i class="fa-brands fa-facebook"></i></a>
+                       <a href="https://www.instagram.com/bhavarvipul.015/"><i class="fa-brands fa-instagram"></i></a>
+                       <a href="https://twitter.com/BhavarVipul"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                    <a href="images/Vipul_Shantaram Bhavar_Resume.pdf" download class="btn btn2">Download CV</a>
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" id="name" placeholder="Your Name" required>
+                        <input type="text" name="Email" id="email" placeholder="Email" required>
+                        <input type="text" name="Mobile" id="mobile" placeholder="Mobile No." required>
+                        <input type="text" name="Subject" id="subject" placeholder="Subject" required>
+                        <textarea name="Message" rows="6" id="message" placeholder="Message"></textarea>
+                        <button type="submit" class="btn btn2" onclick="submitForm()">Submit </button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>copyright @vipul. Made by <i class="fa-solid fa-heart"></i> Vipul Bhavar</p>
+        </div>
+    </div>
+    <script>
+        function submitForm() {
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const mobile = document.getElementById("mobile").value;
+          const subject = document.getElementById("subject").value;
+          const message = document.getElementById("message").value;
+  
+          if (!name || !email || !mobile|| !subject || !message) {
+            return alert("Please fill all the field")
+          }else{
+  
+            // Example usage:
+            const destinationPhoneNumber = '919689134275'; // Replace with the actual destination phone number
+            const templateParams = [
+              'Vipul Bhavar-Portfolio',
+              name,
+              email,
+              mobile,
+              subject,
+              message
+            ];
+        
+  
+  // Call the function with dynamic values
+  sendWhatsAppMessage(destinationPhoneNumber, templateParams);
+          }
+        }
+  
+  function sendWhatsAppMessage(destinationPhoneNumber, templateParams) {
+    const apiUrl = 'https://api.gupshup.io/wa/api/v1/template/msg';
+    const apiKey = 'y6augsnlvufcalxps2grvxgbmxvdjgo7';
+  
+    const postData = new URLSearchParams();
+    postData.append('channel', 'whatsapp');
+    postData.append('source', '12345293827');
+    postData.append('destination', destinationPhoneNumber); // Use the provided destinationPhoneNumber
+    postData.append('src.name', 'ChatWeaver');
+    postData.append('template', JSON.stringify({
+      id: 'e7bac4b3-41ee-414a-896f-1b8c398d8eb3',
+      params: templateParams // Use the provided templateParams array
+    }));
+  
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'apikey': apiKey,
+        'cache-control': 'no-cache',
+      },
+      body: postData,
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+  }
+      </script>
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+    </script>
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+
+        function openmenu(){
+            sidemenu.style.right = "0";
+        }
+        function closemenu(){
+            sidemenu.style.right = "-200px";
+        }
+    </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzhYYtrqdn6Zn2VVJWqbn1B9aG_OkT1PslaP1H8B91nVmnXHjZIbQnceLG2cvxg85Xn/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message sent successfully"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
